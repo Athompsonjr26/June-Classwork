@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple markers</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+        var markers = [];
+      function initMap() {
+        var myLatLng = {lat: 33.748995, lng: -84.387982};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: myLatLng
+        });
+        makeMarker({ lat: 33.773887, lng: -84.402853},map, 'A');
+        makeMarker({ lat: 33.748995, lng: -84.387982},map, 'B');
+        makeMarker({ lat: 30.267153, lng: -97.743061},map, 'C');
+        function makeMarker (location, map, label) {
+        var marker = new google.maps.Marker( {
+          position: location,
+          map: map,
+          title: 'Hello World!',
+          animation: google.maps.Animation.DROP,
+          label: label
+        });
+        markers.push(marker);
+        }
+        var trafficLayer = new google.maps.TrafficLayer();
+          trafficLayer.setMap(map);
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdLAd2-7haqQUWv9zpevBkELp_h8T3W8w&callback=initMap">
+    </script>
+  </body>
+</html>
