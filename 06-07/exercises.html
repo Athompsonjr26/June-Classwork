@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Directive</title>
+    <script src="angular.js"></script>
+    <script>
+    var app = angular.module('app', []);
+    app.controller('myController', function($scope){
+      $scope.name = "Dude";
+    });
+    app.directive('directivePractice', function (){
+      return {
+        scope: {
+          subject: '='
+      },
+        template: '<h1>Good Job, {{subject}} </h1>'
+      };
+    });
+    </script>
+  </head>
+  <body ng-app="app" ng-controller="myController">
+    <directive-practice subject="name"></directive-practice>
+    <directive-practice subject="'Dude'"></directive-practice>
+  </body>
+</html>
