@@ -205,7 +205,13 @@ Simplify the function below by extracting a function that can be reused across b
 
 Hint/Option 1: Extract a function, perhaps called getHitPoints that takes in a character and returns the number of hit points it will induce on the other character.
 Hint/Option 2: Instead of option 1, extract a function, perhaps called attack, which both calculates the hit points and induces the damage on the other character.
-*/
+// */
+// function getHitPoints(character) {
+//   var hitPoint = this.power;
+//   if (this === human && Math.random() > 0.5) {
+//     return goblinHitPoints = hitPoint;
+//   }
+// }
 function fight(human, goblin) {
   // human attacks goblin
   var goblinHitPoints = human.power;
@@ -225,6 +231,19 @@ function fight(human, goblin) {
   // induce damage to human
   human.health -= humanHitPoints;
 }
+// version 2
+
+function fight (human, goblin) {
+  goblin.health -= getHitPoints(human, 0.5);
+  human.health -= getHitPoints(goblin, 0.2);
+}
+
+// version 3
+//
+// function fight (human, goblin) {
+//   attack(human, goblin, 0.5);
+//   attack(goblin, human, 0.2);
+// }
 
 /*
 This function determines the winner of a roshambo game, a.k.a
