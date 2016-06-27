@@ -11,6 +11,25 @@ app.get('/', function(request, response) {
   response.redirect('/HomePage');
 });
 
+app.get('/login', function(request, response) {
+  response.render('login');
+});
+
+app.post('/login-submit', function(request, response) {
+  var name = request.body.name;
+  var password = request.body.password;
+  console.log('name = ' + name);
+  console.log('password = ' + name);
+  if (name === 'anthony' && password === '123') {
+    console.log('login correct');
+    response.redirect('/');
+  } else {
+    console.log('login incorrect');
+    response.redirect('/login');
+  }
+});
+
+
 app.get('/:pageName', function(request, response) {
   var title = request.params.pageName;
   var pageName = request.params.pageName;
@@ -42,21 +61,6 @@ app.get('/:pageName/edit', function(request, response) {
   response.render('edit.hbs', {
     title: 'Edit ' + pageName,
     pageName: pageName
-  });
-});
-
-/* trying to edit the page from HomePage/edit */
-app.get('/:pageName/edit', function(request, response) {
-  var pageName = request.params.pageName;
-  // response.render('edit.hbs', {
-  //   title: 'Edit ' + pageName,
-  //   pageName: pageName
-
-
-  fs.readFile(filename, content, function(err) {
-    /* do something */
-  });
-
   });
 });
 
