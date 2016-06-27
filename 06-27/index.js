@@ -30,7 +30,8 @@ app.get('/:pageName', function(request, response) {
     // console.log(data.toString());
     var wikiContent = wikiLinkify(fileContent);
       response.render('extrapage', {fileContent : fileContent,
-              wikiContent : wikiContent});
+              wikiContent : wikiContent,
+              pageName : pageName});
 
   });
 
@@ -41,6 +42,21 @@ app.get('/:pageName/edit', function(request, response) {
   response.render('edit.hbs', {
     title: 'Edit ' + pageName,
     pageName: pageName
+  });
+});
+
+/* trying to edit the page from HomePage/edit */
+app.get('/:pageName/edit', function(request, response) {
+  var pageName = request.params.pageName;
+  // response.render('edit.hbs', {
+  //   title: 'Edit ' + pageName,
+  //   pageName: pageName
+
+
+  fs.readFile(filename, content, function(err) {
+    /* do something */
+  });
+
   });
 });
 
